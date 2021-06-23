@@ -1,8 +1,5 @@
 Keyboard and Mouse Events 
 
-Name: 吴宇凡
-Student ID: SF2016024
-
 Procedure:
 	Key "1": Decrease the light intensity (can be pressed more than once and must be done after turned on the light);
 	Key "2": Increase the light intensity (can be pressed more than once and must be done after turned on the light);
