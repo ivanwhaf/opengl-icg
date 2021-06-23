@@ -4,8 +4,8 @@
 *****************************************************************************/
 /*****************************************************************************
 		Student Information
-		Student ID: fuck
-		Student Name: fuck
+		Student ID: 
+		Student Name: 
 *****************************************************************************/
 
 #include <stdlib.h>
@@ -89,24 +89,24 @@ void drawLightBulb() {
 
 	/*Draw Light bulb START*/
 	glPushMatrix();
-	glColor4f(0.8f, 0.8f, 0.7f, 0.1f);
+	glColor4f(0.6f, 0.8f, 0.8f, 0.1f);
 	glTranslatef(0.f, 90.f, 200);
 	glRotatef(-90.f, 1.f, 0.f, 0.f);
-	glutSolidTorus(2, 2, 110.f, 110.f);
+	glutSolidTorus(1.5, 1.5, 110.f, 110.f);
 	glPopMatrix();
 
 	glPushMatrix();
-	glColor4f(0.8f, 0.8f, 0.7f, 0.1f);
+	glColor4f(0.6f, 0.8f, 0.8f, 0.1f);
 	glTranslatef(0.f, 87.f, 200);
 	glRotatef(-90.f, 1.f, 0.f, 0.f);
-	glutSolidTorus(2, 2, 110.f, 110.f);
+	glutSolidTorus(1.5, 1.5, 110.f, 110.f);
 	glPopMatrix();
 
 	glPushMatrix();
-	glColor4f(0.8f, 0.8f, 0.7f, 0.1f);
+	glColor4f(0.6f, 0.8f, 0.8f, 0.1f);
 	glTranslatef(0.f, 84.f, 200);
 	glRotatef(-90.f, 1.f, 0.f, 0.f);
-	glutSolidTorus(2, 2, 110.f, 110.f);
+	glutSolidTorus(1.5, 1.5, 110.f, 110.f);
 	glPopMatrix();
 
 	glPushMatrix();
@@ -127,7 +127,7 @@ void drawWall() {
 	glColor3f(1.f, 0.5f, 0.f);
 	glVertex3f(-110.0f, 110.0f, -200.0f);
 	glVertex3f(110.0f, 110.0f, -200.0f);
-	glColor3f(0.3f, 0.5f, 0.5f);
+	glColor3f(0.4f, 0.2f, 0.4f);
 	glVertex3f(110.0f, -110.0f, -200.0f);
 	glVertex3f(-110.0f, -110.0f, -200.0f);
 
@@ -157,6 +157,13 @@ void drawWall() {
 	glColor3f(0.9f, 0.87f, 0.9f);
 	glVertex3f(110.0f, 110.0f, 220.0f);
 
+	/* Window */
+	glColor3f(0.9f, 0.0f, 0.0f);
+	glVertex3f(109.0f, 40.0f, -10.0f);
+	glVertex3f(109.0f, -40.0f, -10.0f);
+	glVertex3f(109.0f, -40.0f, 190.0f);
+	glVertex3f(109.0f, 40.0f, 190.0f);
+
 	/* Left wall */
 	glColor3f(1.f, 0.54f, 0.4f);
 	glVertex3f(-110.0f, 110.0f, -200.0f);
@@ -174,7 +181,8 @@ void drawWall() {
 void drawBed() {
 	// bed
 	glPushMatrix();
-	glColor4f(0.8f, 0.8f, 0.3f, 0.1f);
+	//glColor4f(0.8f, 0.8f, 0.3f, 0.1f);
+	glColor4f(0.5f, 0.8f, 0.5f, 0.1f);
 	glTranslatef(0.f, -100.f, bed_z);
 	glScalef(110.f, 20.0f, 200.f);
 	glutSolidCube(1.f);
@@ -182,7 +190,8 @@ void drawBed() {
 
 	// bed head board
 	glPushMatrix();
-	glColor4f(0.7f, 0.5f, 0.2f, 0.1f);
+	//glColor4f(0.7f, 0.5f, 0.2f, 0.1f);
+	glColor4f(0.5f, 0.8f, 0.5f, 0.1f);
 	glTranslatef(0.f, -80.f, bed_z - 100);
 	glScalef(110.f, 60.0f, 10.f);
 	glutSolidCube(1.f);
@@ -292,6 +301,13 @@ void drawElectricFan() {
 	glScalef(100.f, 6.0f, 5.f);
 	glutSolidCube(1.f);
 	glPopMatrix();
+
+	// outer
+	glPushMatrix();
+	glColor4f(0.0f, 0.0f, 0.9f, 0.1f);
+	glTranslatef(0.f, 40.f, -180.f);
+	gluCylinder(quadobj, 50.f, 52.f, 6.f, 30.f, 30.f);
+	glPopMatrix();
 }
 
 void drawChair() {
@@ -348,7 +364,93 @@ void drawTriangle() {
 	glVertex2f(-0.0, 0.7);
 	glEnd();
 }
+void drawFlag() {
+	glBegin(GL_POLYGON);
+	glColor3f(0.9f, 0.9f, 0.0f);
 
+	const GLfloat Pi = 3.1415926536f;  //定义Pi值
+	GLfloat X[5], Y[5];  //用数组声明5组坐标
+	int R = 12;
+
+	for (int i = 0; i <= 4; i++)
+	{
+		X[i] = R * cos(2 * Pi * i / 5)+20;
+		Y[i] = R * sin(2 * Pi * i / 5)+20;
+	}
+	glVertex3f(108.0f, Y[0], X[0]);
+	glVertex3f(108.0f, Y[2], X[2]);
+	glVertex3f(108.0f, Y[4], X[4]);
+	glVertex3f(108.0f, Y[1], X[1]);
+	glVertex3f(108.0f, Y[3], X[3]);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.9f, 0.9f, 0.0f);
+	R = 5;
+	for (int i = 0; i <= 4; i++)
+	{
+		//在圆上初始化5个坐标点
+		X[i] = R * cos(2 * Pi * i / 5) + 60;
+		Y[i] = R * sin(2 * Pi * i / 5) + 30;
+	}
+	glVertex3f(108.0f, Y[0], X[0]);
+	glVertex3f(108.0f, Y[2], X[2]);
+	glVertex3f(108.0f, Y[4], X[4]);
+	glVertex3f(108.0f, Y[1], X[1]);
+	glVertex3f(108.0f, Y[3], X[3]);
+	glEnd();
+
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.9f, 0.9f, 0.0f);
+	R = 5;
+	for (int i = 0; i <= 4; i++)
+	{
+		//在圆上初始化5个坐标点
+		X[i] = R * cos(2 * Pi * i / 5) + 70;
+		Y[i] = R * sin(2 * Pi * i / 5) + 20;
+	}
+	glVertex3f(108.0f, Y[0], X[0]);
+	glVertex3f(108.0f, Y[2], X[2]);
+	glVertex3f(108.0f, Y[4], X[4]);
+	glVertex3f(108.0f, Y[1], X[1]);
+	glVertex3f(108.0f, Y[3], X[3]);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.9f, 0.9f, 0.0f);
+	R = 5;
+	for (int i = 0; i <= 4; i++)
+	{
+		//在圆上初始化5个坐标点
+		X[i] = R * cos(2 * Pi * i / 5) + 67;
+		Y[i] = R * sin(2 * Pi * i / 5) + 10;
+	}
+	glVertex3f(108.0f, Y[0], X[0]);
+	glVertex3f(108.0f, Y[2], X[2]);
+	glVertex3f(108.0f, Y[4], X[4]);
+	glVertex3f(108.0f, Y[1], X[1]);
+	glVertex3f(108.0f, Y[3], X[3]);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.9f, 0.9f, 0.0f);
+	R = 5;
+	for (int i = 0; i <= 4; i++)
+	{
+		//在圆上初始化5个坐标点
+		X[i] = R * cos(2 * Pi * i / 5) + 57;
+		Y[i] = R * sin(2 * Pi * i / 5) + 0;
+	}
+	glVertex3f(108.0f, Y[0], X[0]);
+	glVertex3f(108.0f, Y[2], X[2]);
+	glVertex3f(108.0f, Y[4], X[4]);
+	glVertex3f(108.0f, Y[1], X[1]);
+	glVertex3f(108.0f, Y[3], X[3]);
+	glEnd();
+	
+
+}
 void display(void) // Here's Where We Do All The Drawing
 {
 	/* Clear the buffer */
@@ -367,6 +469,7 @@ void display(void) // Here's Where We Do All The Drawing
 	drawElectricFan(); // electric fan
 	drawChair(); // chair
 	drawBall(); // ball
+	drawFlag();
 
 	glPopMatrix();
 
@@ -544,7 +647,7 @@ void idle()
 				ballY = -90;
 				direction = 1;
 				v0 = 9.8 * accumTime;
-				v0 -= 0.3; // energy loss
+				v0 -= 0.4; // energy loss
 				cout << "touch down! v0:" << v0 << endl;
 				startTime = GetTickCount64() * 0.001;
 			}
@@ -554,7 +657,7 @@ void idle()
 			if (accumTime >= 0) {
 				ballY = (-0.9 + v0 * accumTime - 0.5 * 9.8 * accumTime * accumTime) * 100;
 				lastBallY = ballY;
-				cout << "accuTime:" << accumTime << " v0:" << v0 << " ballY:" << ballY << endl;
+				//cout << "accuTime:" << accumTime << " v0:" << v0 << " ballY:" << ballY << endl;
 			}
 			if (v0 - 9.8 * accumTime <= 0) {
 				direction = 0;
